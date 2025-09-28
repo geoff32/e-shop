@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Chocolat 1",
+    "price": 19.99,
+    "description": "Ca a l'air très bon."
+  },
+  {
+    "id": 2,
+    "name": "Coffret 1",
+    "price": 29.99,
+    "description": "Pour les aventuriers."
+  },
+  {
+    "id": 3,
+    "name": "Coffret 2",
+    "price": 39.99,
+    "description": "Pour les gourmands."
+  }
+]
