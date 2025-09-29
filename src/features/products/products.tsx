@@ -2,6 +2,7 @@ import React from "react";
 import products from '../../data/products.json';
 import { useAppDispatch } from "../../app/hooks";
 import { add } from "../basket/basketSlice";
+import { Card, CardBody, CardTitle, CardFooter, Badge, Container, Button, CardText } from "../../components";
 
 const Products: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -9,16 +10,22 @@ const Products: React.FC = () => {
   return (
     <div>
       <h2>Catalogue</h2>
-      <ul>
+      <Container className="d-inline-flex flex-wrap gap-3 justify-content-center">
         {products.map(product => (
-          <li key={product.id}>
-            {product.name} - {product.price.toFixed(2)}€
-            <button onClick={() => dispatch(add({ id: product.id, quantity: 1 }))}>
-              Ajouter au panier
-            </button>
-          </li>
+          <Card key={product.id}>
+            <img src={product.image} alt={product.name} style={{ maxWidth: '150px', marginBottom: '10px' }} />
+            <CardBody>
+              <CardTitle>{product.name} <Badge>{product.price.toFixed(2)}€</Badge></CardTitle>
+              <CardText>{product.description}</CardText>
+            </CardBody>
+            <CardFooter>
+              <Button onClick={() => dispatch(add({ id: product.id, quantity: 1 }))}>
+                Ajouter au panier
+              </Button>
+            </CardFooter>
+          </Card>
         ))}
-      </ul>
+      </Container>
     </div>
   );
 };

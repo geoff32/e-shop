@@ -3,6 +3,12 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "license": "MIT",
+  "author": "Geoffroy Herb",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/geoff32/e-shop"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -10,8 +16,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.0.1",
+    "@fortawesome/react-fontawesome": "^3.0.2",
+    "@popperjs/core": "^2.11.8",
     "@reduxjs/toolkit": "^2.9.0",
+    "bootstrap": "^5.3.8",
     "react": "^19.1.1",
+    "react-bootstrap": "^2.10.10",
     "react-dom": "^19.1.1",
     "react-redux": "^9.2.0"
   },
