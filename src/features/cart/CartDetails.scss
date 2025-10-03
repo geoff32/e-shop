@@ -54,4 +54,12 @@
     margin-top: 1rem;
     font-weight: bold;
   }
+
+  &__actions {
+    margin-top: 1rem;
+    
+    .btn {
+      width: 100%;
+    }
+  }
 }

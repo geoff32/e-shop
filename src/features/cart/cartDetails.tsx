@@ -1,7 +1,9 @@
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addToCart, decrementQuantity, removeFromCart, selectCart } from './cartSlice';
-import { Container } from '../../components';
+import { Container, Button } from '../../components';
+import { Link } from 'react-router-dom';
 import './CartDetails.scss';
+import { appRoutes } from '../../App';
 
 const CartDetails: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -65,6 +67,11 @@ const CartDetails: React.FC = () => {
           <div className="cart-details__total">
             <div>Total:</div>
             <div>{total.toFixed(2)}€</div>
+          </div>
+          <div className="cart-details__actions">
+            <Link to={appRoutes.order} className="w-100">
+              <Button className="w-100">Commander</Button>
+            </Link>
           </div>
         </>
       )}
