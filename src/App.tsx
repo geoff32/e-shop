@@ -9,7 +9,7 @@ import OrderPipeline from './features/order/OrderPipeline'
 const root = "/e-shop"; //config.base ? `/${config.base}` : '/';
 
 export const appRoutes = {
-  home: root,
+  catalog: root,
   order: `${root}/order`
 };
 
@@ -18,7 +18,7 @@ function App() {
     <Router>
       <Container>
         <Navbar className="app-navbar">
-          <NavbarBrand href={appRoutes.home}>Ecole Marie Marvingt</NavbarBrand>
+          <NavbarBrand href={appRoutes.catalog}>Ecole Marie Marvingt</NavbarBrand>
           <NavbarCollapse className="basket-icon">
             <NavbarText>
               <Cart />
@@ -26,7 +26,7 @@ function App() {
           </NavbarCollapse>
         </Navbar>
         <Routes>
-          <Route path={appRoutes.home} element={<Products />} />
+          <Route path={appRoutes.catalog} element={<Products />} />
           <Route path={appRoutes.order} element={<OrderPipeline />} />
         </Routes>
       </Container>

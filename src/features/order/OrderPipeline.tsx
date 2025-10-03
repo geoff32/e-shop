@@ -2,9 +2,11 @@ import { Container, Row, Col } from '../../components';
 import { Button } from '../../components';
 import './OrderPipeline.scss';
 import { useAppSelector } from '../../app/hooks';
+import { Link } from 'react-router-dom';
 import { selectCartItems, selectCartTotal } from '../cart/cartSlice';
 import { QRCodeSVG } from 'qrcode.react';
 import { useRef } from 'react';
+import { appRoutes } from '../../App';
 
 const OrderPipeline = () => {
   const cartItems = useAppSelector(selectCartItems);
@@ -49,6 +51,11 @@ const OrderPipeline = () => {
     <Container>
       <Row>
         <Col>
+          <div style={{ marginBottom: '20px' }}>
+            <Link to={appRoutes.catalog}>
+              <Button>Retour au catalogue</Button>
+            </Link>
+          </div>
           <h2>Passer la commande</h2>
           <div className="order-summary">
             <h3>Récapitulatif de la commande</h3>
