@@ -14,14 +14,14 @@
     "description": "Miam."
   },
   {
-    "id": 2,
+    "id": 3,
     "name": "Coffret 1",
     "image": "/e-shop/images/reglette-7.webp",
     "price": 29.99,
     "description": "Pour les aventuriers."
   },
   {
-    "id": 3,
+    "id": 4,
     "name": "Coffret 2",
     "image": "/e-shop/images/reglette-7.webp",
     "price": 39.99,

@@ -1,0 +1,14 @@
+.icon-with-counter {
+  position: relative;
+  display: inline-block;
+
+  .icon-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(30%, 30%);
+    font-size: 0.75em;
+    padding: 0.25em 0.5em;
+    pointer-events: none;
+  }
+}

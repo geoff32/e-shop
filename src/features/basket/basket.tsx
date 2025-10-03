@@ -1,40 +1,29 @@
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import products from '../../data/products.json';
-import { add, selectBasket } from './basketSlice';
+import { useState } from "react";
+import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
+import { IconWithCounter, Offcanvas, OffcanvasBody, OffcanvasHeader, OffcanvasTitle } from "../../components";
+import BasketCanvas from "./basketCanvas";
+import { useAppSelector } from "../../app/hooks";
+import { selectBasket } from "./basketSlice";
 
+const Basket = () => {
+  const [show, setShow] = useState(false);
+    const basket = useAppSelector(selectBasket);
 
-export const getProduct = (id: number) => {
-  return products.find(product => product.id === id);
-};
-
-const Basket: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const basket = useAppSelector(selectBasket);
-
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  
   return (
-    <div>
-      <h2>Mon panier</h2>
-      <ul>
-        {basket.items.map(item => {
-          const product = getProduct(item.id);
-          if (!product) return null;
-
-          return (
-            <li key={item.id}>
-              {product.name} - {product.price.toFixed(2)}€
-              <button onClick={() => dispatch(add({ id: item.id, quantity: 1 }))}>
-                +
-              </button>
-              {item.quantity}
-              <button onClick={() => dispatch(add({ id: item.id, quantity: -1 }))}>
-                -
-              </button>
-              {(item.quantity * product.price).toFixed(2)}€
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <>
+      <IconWithCounter icon={faBasketShopping} count={basket.items.length} onClick={handleShow} />
+      <Offcanvas show={show} onHide={handleClose} placement="end">
+        <OffcanvasHeader closeButton>
+          <OffcanvasTitle>Votre panier</OffcanvasTitle>
+        </OffcanvasHeader>
+        <OffcanvasBody>
+          <BasketCanvas />
+        </OffcanvasBody>
+      </Offcanvas>
+    </>
   );
 };
 

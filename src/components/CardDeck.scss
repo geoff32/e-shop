@@ -1,0 +1,18 @@
+@import "bootstrap/scss/bootstrap-utilities.scss";
+@import "bootstrap/scss/bootstrap-grid.scss";
+
+.card-deck {
+  // reuse Bootstrap's card-deck styles
+  @extend .d-inline-flex;
+  @extend .flex-wrap;
+  @extend .gap-1;
+  @extend .justify-content-center;
+
+  .card {
+    @extend .text-center;
+    @extend .col-6;
+    @extend .col-sm-5;
+    @extend .col-md-4;
+    @extend .col-lg-3;
+  }
+}
