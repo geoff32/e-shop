@@ -1,31 +1,75 @@
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { addToCart, decrementQuantity, selectCart } from './cartSlice';
+import { addToCart, decrementQuantity, removeFromCart, selectCart } from './cartSlice';
+import { Container } from '../../components';
+import './CartDetails.scss';
 
-const BasketCanvas: React.FC = () => {
+const CartDetails: React.FC = () => {
   const dispatch = useAppDispatch();
-  const cart = useAppSelector(selectCart);
+  const { items } = useAppSelector(selectCart);
+
+  const handleIncrement = (id: string) => {
+    const item = items.find((i) => i.id === id);
+    if (item) {
+      dispatch(addToCart(item));
+    }
+  };
+
+  const handleDecrement = (id: string) => {
+    dispatch(decrementQuantity(id));
+  };
+
+  const handleRemove = (id: string) => {
+    dispatch(removeFromCart(id));
+  };
+
+  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <ul>
-      {cart.items.map(item => {
-        if (!item) return null;
-
-        return (
-          <li key={item.id}>
-            {item.name} - {item.price.toFixed(2)}€
-            <button onClick={() => dispatch(addToCart(item))}>
-              +
-            </button>
-            {item.quantity}
-            <button onClick={() => dispatch(decrementQuantity(item.id))}>
-              -
-            </button>
-            {(item.quantity * item.price).toFixed(2)}€
-          </li>
-        );
-      })}
-    </ul>
+    <Container className="cart-details">
+      {items.length === 0 ? (
+        <div className="cart-details__empty">Votre panier est vide</div>
+      ) : (
+        <>
+          {items.map((item) => (
+            <div key={item.id} className="cart-details__item">
+              <div className="cart-details__item-info">
+                <img src={item.image} alt={item.name} className="cart-details__item-image" />
+                <div>
+                  <div className="cart-details__item-name">{item.name}</div>
+                  <div className="cart-details__item-price">{item.price}€</div>
+                </div>
+              </div>
+              <div className="cart-details__item-controls">
+                <button
+                  onClick={() => handleDecrement(item.id)}
+                  className="btn btn-sm btn-outline-secondary cart-details__item-button--decrement"
+                >
+                  -
+                </button>
+                <span className="cart-details__item-quantity">{item.quantity}</span>
+                <button
+                  onClick={() => handleIncrement(item.id)}
+                  className="btn btn-sm btn-outline-secondary cart-details__item-button--increment"
+                >
+                  +
+                </button>
+                <button
+                  onClick={() => handleRemove(item.id)}
+                  className="btn btn-sm btn-outline-danger"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+          ))}
+          <div className="cart-details__total">
+            <div>Total:</div>
+            <div>{total.toFixed(2)}€</div>
+          </div>
+        </>
+      )}
+    </Container>
   );
 };
 
-export default BasketCanvas;
+export default CartDetails;
