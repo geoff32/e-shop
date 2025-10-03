@@ -1,27 +1,27 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "name": "Réglette 7 chocolats de Dubaï Style",
     "image": "/e-shop/images/reglette-7.webp",
     "price": 10.45,
     "description": "Réglette."
   },
   {
-    "id": 2,
+    "id": "2",
     "name": "Chocolat 2",
     "image": "/e-shop/images/reglette-7.webp",
     "price": 19.99,
     "description": "Miam."
   },
   {
-    "id": 3,
+    "id": "3",
     "name": "Coffret 1",
     "image": "/e-shop/images/reglette-7.webp",
     "price": 29.99,
     "description": "Pour les aventuriers."
   },
   {
-    "id": 4,
+    "id": "4",
     "name": "Coffret 2",
     "image": "/e-shop/images/reglette-7.webp",
     "price": 39.99,

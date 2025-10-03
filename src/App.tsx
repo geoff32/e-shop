@@ -1,8 +1,8 @@
 import './App.css'
 import Products from './features/products/products'
-import BasketCanvas from "./features/basket/basketCanvas"
+import BasketCanvas from "./features/cart/cartDetails"
 import { Container, Row, Col, Navbar, NavbarText, NavbarBrand } from './components'
-import Basket from './features/basket/basket'
+import Basket from './features/cart/cart'
 
 function App() {
   return (

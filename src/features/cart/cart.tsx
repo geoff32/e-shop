@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
 import { IconWithCounter, Offcanvas, OffcanvasBody, OffcanvasHeader, OffcanvasTitle } from "../../components";
-import BasketCanvas from "./basketCanvas";
+import BasketCanvas from "./cartDetails";
 import { useAppSelector } from "../../app/hooks";
-import { selectBasket } from "./basketSlice";
+import { selectCart } from "./cartSlice";
 
 const Basket = () => {
   const [show, setShow] = useState(false);
-    const basket = useAppSelector(selectBasket);
+    const basket = useAppSelector(selectCart);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

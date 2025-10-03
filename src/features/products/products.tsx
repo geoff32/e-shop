@@ -1,7 +1,7 @@
 import React from "react";
 import products from '../../data/products.json';
 import { useAppDispatch } from "../../app/hooks";
-import { add } from "../basket/basketSlice";
+import { addToCart } from "../cart/cartSlice";
 import { Card, CardBody, CardTitle, CardFooter, Badge, Button, CardText, CardImg, CardDeck } from "../../components";
 
 const Products: React.FC = () => {
@@ -19,7 +19,7 @@ const Products: React.FC = () => {
               <CardText>{product.description}</CardText>
             </CardBody>
             <CardFooter>
-              <Button onClick={() => dispatch(add({ id: product.id, quantity: 1 }))}>
+              <Button onClick={() => dispatch(addToCart(product))}>
                 Ajouter au panier
               </Button>
             </CardFooter>
