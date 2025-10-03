@@ -18,7 +18,7 @@ function App() {
     <Router>
       <Container>
         <Navbar className="app-navbar">
-          <NavbarBrand href="/">Ecole Marie Marvingt</NavbarBrand>
+          <NavbarBrand href={appRoutes.home}>Ecole Marie Marvingt</NavbarBrand>
           <NavbarCollapse className="basket-icon">
             <NavbarText>
               <Cart />
