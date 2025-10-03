@@ -1,14 +1,18 @@
-import './App.css'
+import './App.scss'
 import Products from './features/products/products'
-import { Container, Row, Col, Navbar, NavbarText, NavbarBrand } from './components'
-import Basket from './features/cart/cart'
+import { Container, Row, Col, Navbar, NavbarText, NavbarBrand, NavbarCollapse } from './components'
+import Cart from './features/cart/cart'
 
 function App() {
   return (
     <Container>
-      <Navbar>
+      <Navbar className="app-navbar">
         <NavbarBrand href="#">Ecole Marie Marvingt</NavbarBrand>
-        <NavbarText><Basket /></NavbarText>
+        <NavbarCollapse className="basket-icon">
+          <NavbarText>
+            <Cart />
+          </NavbarText>
+        </NavbarCollapse>
       </Navbar>
       <Row>
         <Col>

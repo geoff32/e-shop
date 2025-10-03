@@ -14,6 +14,7 @@ import IconWithCounter from "./IconWithCounter";
 import Image from "./Image";
 import Navbar from "./Navbar";
 import NavbarBrand from "./NavbarBrand";
+import NavbarCollapse from "./NavbarCollapse";
 import NavbarText from "./NavbarText";
 import Offcanvas from "./Offcanvas";
 import OffcanvasBody from "./OffcanvasBody";
@@ -38,6 +39,7 @@ export {
   IconWithCounter,
   Navbar,
   NavbarBrand,
+  NavbarCollapse,
   NavbarText,
   Offcanvas,
   OffcanvasBody,
