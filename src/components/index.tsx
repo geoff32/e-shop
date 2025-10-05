@@ -21,8 +21,12 @@ import OffcanvasBody from "./OffcanvasBody";
 import OffcanvasHeader from "./OffcanvasHeader";
 import OffcanvasTitle from "./OffcanvasTitle";
 import Row from "./Row";
+import NavigationBar from "./NavigationBar";
+import { FormGroup } from "./FormGroup";
+import { FormContainer } from "./FormContainer";
 
 export {
+  NavigationBar,
   Badge,
   Button,
   Card,
@@ -46,4 +50,6 @@ export {
   OffcanvasHeader,
   OffcanvasTitle,
   Row,
+  FormGroup,
+  FormContainer,
 };

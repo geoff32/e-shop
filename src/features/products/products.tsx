@@ -1,11 +1,12 @@
 import React from "react";
-import products from '../../data/products.json';
-import { useAppDispatch } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { addToCart } from "../cart/cartSlice";
 import { Card, CardBody, CardTitle, CardFooter, Badge, Button, CardText, CardImg, CardDeck } from "../../components";
+import { selectProduct } from "./productsSlice";
 
 const Products: React.FC = () => {
   const dispatch = useAppDispatch();
+  const products = useAppSelector(selectProduct);
 
   return (
     <div>

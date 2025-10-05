@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import products from '../../data/products.json'
+import type { RootState } from '../../app/store'
 
 export type Product = {
   id: string
@@ -17,4 +18,5 @@ const productsSlice = createSlice({
   reducers: {},
 })
 
+export const selectProduct = (state: RootState) => state.products;
 export default productsSlice.reducer
