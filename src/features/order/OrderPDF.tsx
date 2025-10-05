@@ -23,78 +23,88 @@ const styles = StyleSheet.create({
   page: {
     flexDirection: 'column',
     backgroundColor: '#ffffff',
-    padding: 30,
+    padding: 12,
   },
   section: {
-    marginBottom: 20,
+    marginBottom: 10,
   },
   childSection: {
-    marginBottom: 15,
-    paddingLeft: 10,
+    marginBottom: 7,
+    paddingLeft: 4,
   },
   childTitle: {
-    fontSize: 14,
+    fontSize: 10,
     fontWeight: 'bold',
-    marginBottom: 5,
+    marginBottom: 2,
   },
   header: {
-    marginBottom: 30,
+    marginBottom: 12,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+  },
+  qrCode: {
+    marginLeft: 10,
+    alignItems: 'flex-end',
+    justifyContent: 'flex-start',
+  },
+  qrCodeImage: {
+    width: 64,
+    height: 64,
   },
   title: {
-    fontSize: 24,
+    fontSize: 16,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 8,
   },
   subtitle: {
-    fontSize: 18,
+    fontSize: 12,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 4,
   },
   row: {
     flexDirection: 'row',
-    marginBottom: 5,
+    marginBottom: 2,
   },
   label: {
     fontWeight: 'bold',
-    width: 150,
+    width: 80,
+    fontSize: 9,
   },
   value: {
     flex: 1,
+    fontSize: 9,
   },
   item: {
     flexDirection: 'row',
-    marginBottom: 5,
+    marginBottom: 2,
     borderBottom: '1px solid #eee',
-    paddingBottom: 5,
+    paddingBottom: 2,
   },
   itemName: {
     flex: 2,
+    fontSize: 9,
   },
   itemQuantity: {
     flex: 1,
+    fontSize: 9,
   },
   itemPrice: {
     flex: 1,
     textAlign: 'right',
+    fontSize: 9,
   },
   total: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    marginTop: 10,
-    paddingTop: 10,
-    borderTop: '2px solid #000',
+    marginTop: 4,
+    paddingTop: 4,
+    borderTop: '1px solid #000',
   },
   totalLabel: {
     fontWeight: 'bold',
-    marginRight: 20,
-  },
-  qrCode: {
-    marginTop: 30,
-    alignItems: 'center',
-  },
-  qrCodeImage: {
-    width: 128,
-    height: 128,
+    marginRight: 8,
+    fontSize: 10,
   },
 });
 
@@ -110,13 +120,11 @@ const OrderPDF = ({ customer, items, total }: OrderPDFProps): ReactElement => {
           total,
           date: new Date().toISOString(),
         });
-
         const url = await QRCode.toDataURL(qrData, {
-          width: 128,
-          margin: 4,
-          errorCorrectionLevel: 'M',
+          width: 64,
+          margin: 2,
+          errorCorrectionLevel: 'M'
         });
-
         setQrCodeUrl(url);
       } catch (error) {
         if (error instanceof Error) {
@@ -124,7 +132,6 @@ const OrderPDF = ({ customer, items, total }: OrderPDFProps): ReactElement => {
         }
       }
     };
-
     void generateQRCode();
   }, [customer, items, total]);
 
@@ -132,8 +139,13 @@ const OrderPDF = ({ customer, items, total }: OrderPDFProps): ReactElement => {
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.header}>
-          <Text style={styles.title}>Bon de commande</Text>
+          <View>
+            <Text style={styles.title}>Bon de commande</Text>
             <Text>Date : {new Date().toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' })}</Text>
+          </View>
+          <View style={styles.qrCode}>
+            {qrCodeUrl && <Image src={qrCodeUrl} style={styles.qrCodeImage} />}
+          </View>
         </View>
 
         <View style={styles.section}>
@@ -184,12 +196,8 @@ const OrderPDF = ({ customer, items, total }: OrderPDFProps): ReactElement => {
           ))}
           <View style={styles.total}>
             <Text style={styles.totalLabel}>Total :</Text>
-            <Text>{total.toFixed(2)}€</Text>
+            <Text>{total}€</Text>
           </View>
-        </View>
-
-        <View style={styles.qrCode}>
-          {qrCodeUrl && <Image src={qrCodeUrl} style={styles.qrCodeImage} />}
         </View>
       </Page>
     </Document>

@@ -66,7 +66,7 @@ const CartDetails: React.FC = () => {
           ))}
           <div className="cart-details__total">
             <div>Total:</div>
-            <div>{total.toFixed(2)}€</div>
+            <div>{total}€</div>
           </div>
           <div className="cart-details__actions">
             <Link to={appRoutes.order} className="w-100">
