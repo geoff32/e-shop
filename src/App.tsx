@@ -9,7 +9,7 @@ import OrderConfirmation from './features/order/OrderConfirmation'
 const root = "/e-shop"; //config.base ? `/${config.base}` : '/';
 
 export const appRoutes = {
-  catalog: root,
+  catalog: `${root}/`,
   order: `${root}/order`,
   orderConfirmation: `${root}/order/confirmation`
 };

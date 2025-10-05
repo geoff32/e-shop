@@ -6,19 +6,12 @@ import { Button, Col, Container, FormContainer, FormGroup, Row } from '../../com
 import { useAppSelector } from '../../app/hooks';
 import { selectCartItems, selectCartTotal } from '../cart/cartSlice';
 import { selectClasses } from '../classes/classesSlice';
+import { selectUser } from '../user/userSlice';
 
 const OrderPipeline = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    lastName: '',
-    firstName: '',
-    email: '',
-    children: [{
-      lastName: '',
-      firstName: '',
-      class: ''
-    }]
-  });
+  const user = useAppSelector(selectUser);
+  const [formData, setFormData] = useState(user);
   const cartItems = useAppSelector(selectCartItems);
   const total = useAppSelector(selectCartTotal);
   const classes = useAppSelector(selectClasses);

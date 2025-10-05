@@ -1,9 +1,10 @@
 import { Container, Row, Col, Button } from '../../components';
 import './OrderPipeline.scss';
 import './OrderConfirmation.scss';
-import { useAppSelector } from '../../app/hooks';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { Link, useLocation } from 'react-router-dom';
 import { selectCartItems, selectCartTotal } from '../cart/cartSlice';
+import { setUser } from '../user/userSlice';
 import { QRCodeSVG } from 'qrcode.react';
 import { useRef } from 'react';
 import { appRoutes } from '../../App';
@@ -23,7 +24,13 @@ interface OrderConfirmationState {
 
 const OrderConfirmation = () => {
   const location = useLocation();
-  const formData = location.state as OrderConfirmationState;
+  const user = useAppSelector(state => state.user);
+  const formData = (location.state as OrderConfirmationState) || user;
+  const dispatch = useAppDispatch();
+  // Sauvegarde des informations utilisateur via Redux Toolkit
+  if (formData && location.state) {
+    dispatch(setUser(formData));
+  }
   const cartItems = useAppSelector(selectCartItems);
   const total = useAppSelector(selectCartTotal);
   const qrRef = useRef<SVGSVGElement>(null);
