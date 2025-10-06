@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { addToCart, decrementQuantity, removeFromCart, selectCart } from './cartSlice';
+import { addToCart, decrementQuantity, removeFromCart, selectCart, selectCartTotal } from './cartSlice';
 import { Container, Button } from '../../components';
 import { Link } from 'react-router-dom';
 import './CartDetails.scss';
@@ -24,7 +24,7 @@ const CartDetails: React.FC = () => {
     dispatch(removeFromCart(id));
   };
 
-  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const total = useAppSelector(selectCartTotal);
 
   return (
     <Container className="cart-details">
